@@ -31,17 +31,28 @@ public class UserProfile implements Serializable {
 	/**
 	 * Shared, empty profile that when used indicates no profile data is available (all property values are null).
 	 */
-	public static final UserProfile EMPTY = new UserProfile(null, null, null, null, null);
+	public static final UserProfile EMPTY = new UserProfile(null, null, null, null, null, null);
+
+	private final String id;
 
 	private final String name;
-	
+
 	private final String firstName;
-	
+
 	private final String lastName;
-	
+
 	private final String email;
-	
+
 	private final String username;
+
+	/**
+	 * The user's id in the provider
+	 * May be null if not exposed/supported by the provider.
+	 * @return the user's id in the provider
+	 */
+	public String getId() {
+		return id;
+	}
 
 	/**
 	 * The user's registered full name e.g. Keith Donald.
@@ -88,7 +99,8 @@ public class UserProfile implements Serializable {
 		return username;
 	}
 	
-	public UserProfile(String name, String firstName, String lastName, String email, String username) {
+	public UserProfile(String id, String name, String firstName, String lastName, String email, String username) {
+		this.id = id;
 		this.name = name;
 		this.firstName = firstName;
 		this.lastName = lastName;
